@@ -275,11 +275,11 @@ Add the following component to your frontend:
 ::::code-group
 ```vue [app/page.vue] height=500 collapse
 <script setup lang="ts">
-import { useObject } from '@ai-sdk/vue'
+import { experimental_useObject as useObject } from '@ai-sdk/vue'
 import { ref } from 'vue'
 import { z } from 'zod'
 import { CodeBlock, CodeBlockCopyButton } from '@/components/ai-elements/code-block'
-import { Input, PromptInputSubmit, PromptInputTextarea } from '@/components/ai-elements/prompt-input'
+import { PromptInput, PromptInputSubmit, PromptInputTextarea } from '@/components/ai-elements/prompt-input'
 
 const codeBlockSchema = z.object({
   language: z.string(),
@@ -315,7 +315,7 @@ function handleSubmit(e: Event) {
         </CodeBlock>
       </div>
 
-      <Input
+      <PromptInput
         class="mt-4 w-full max-w-2xl mx-auto relative"
         @submit="handleSubmit"
       >
@@ -329,7 +329,7 @@ function handleSubmit(e: Event) {
           :disabled="!input.trim()"
           class="absolute bottom-1 right-1"
         />
-      </Input>
+      </PromptInput>
     </div>
   </div>
 </template>
